@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style type="text/css">
+
+.cell{
+
+    text-align: center;
+    border: 1px solid black;
+    height: 130px;
+}
+
+</style>
+
+<body>
+    <h2>Enter: 
+        <label for="raws">Rows</label>
+        <input type="number" id="Rows" />
+        <label for="columns">Columns</label>
+        <input type="number" id="Columns" />
+        <button id="button">Generate</button>
+    </h2>
+    <div class="grid"></div>
+
+</body>
+<script type="text/javascript">
+
+let btn = document.getElementById("button");
+btn.addEventListener("click", func);
+let div=document.getElementsByClassName("grid");
+
+function func() {
+    let Nrows=document.getElementById("Rows").value;
+    let Ncolumns=document.getElementById("Columns").value;
+     div[0].innerHTML=""
+
+    for (var i = 0; i < Nrows*Ncolumns; i++) {
+        let nd= document.createElement("div");
+        nd.setAttribute("class","cell");
+        nd.textContent=i;
+        div[0].appendChild(nd);
+    }
+    let r="auto ";
+    let v=""
+    for (var i = 0; i <Ncolumns ; i++) {
+        v=r+v;
+
+         }
+    div[0].style.display = "grid";
+    div[0].style.width = "100%";
+    div[0].style.gridTemplateColumns=v;
+
+    
+    }
+
+
+    
+
+</script>
+</html>

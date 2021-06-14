@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style type="text/css">
+
+
+
+</style>
+
+<body>
+    <h2>Enter: 
+        <label for="columns">Columns</label>
+        <input type="number" id="Columns" />
+        <button id="button">Generate</button>
+    </h2>
+    <div class="row">
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta justo a nisl accumsan, eget rutrum ante lacinia. Proin tincidunt, mi ac fringilla consequat, quam sem aliquet mi, finibus aliquet massa est et nisl. Fusce lacinia urna eu nulla scelerisque porttitor. Aenean fringilla nisl orci, non euismod lorem venenatis quis. Sed id ornare velit. Quisque sollicitudin, ante non elementum fringilla, mauris nibh congue justo, in suscipit libero augue malesuada enim. Quisque ac nisi non mauris vehicula dictum. Praesent venenatis erat a augue tempor, quis fermentum metus faucibus. Aliquam sollicitudin velit non purus dignissim, quis dignissim orci dictum. Quisque luctus orci justo. Sed at ipsum at lorem fringilla vehicula non in nulla.
+
+Aenean ac accumsan enim. Phasellus sem nibh, vehicula at fermentum molestie, posuere nec libero. Phasellus aliquet dolor fringilla neque consectetur ornare. Vivamus et urna ac libero malesuada pretium eget ac nibh. Aenean fringilla, arcu vel lobortis elementum, ligula arcu suscipit dui, eget posuere nulla dolor sit amet nisi. Integer lacus mauris, consectetur et justo sed, volutpat rhoncus augue. Donec sollicitudin nisi ut tincidunt ultrices. Maecenas interdum condimentum enim dignissim posuere. Ut vitae sapien nec tellus malesuada mollis. In laoreet ante odio, et posuere erat congue molestie. Donec eros ex, sollicitudin at felis vel, pulvinar eleifend justo. Quisque congue vel neque ut tempor. Etiam id nulla a diam imperdiet varius quis vitae leo. Cras quis orci vestibulum, maximus mauris quis, ornare ipsum. Nulla tempor mauris ex, in egestas ipsum semper in. Duis fermentum, metus eget fermentum tristique, ante magna porttitor nulla, sed consectetur ante eros vel augue.
+
+Quisque rutrum id massa id imperdiet. Fusce mollis euismod elit, quis volutpat nibh blandit a. Pellentesque ut tortor et neque venenatis lacinia non eu neque. Donec pulvinar a dui nec tincidunt. Integer dolor elit, aliquam non venenatis at, luctus id felis. Nam elementum vulputate diam a dignissim. Nullam ac ipsum et neque gravida fermentum. Nunc condimentum semper elit, eget condimentum nisi convallis at. Maecenas egestas pulvinar leo.
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent finibus ut nunc eu sagittis. Vivamus vel urna lobortis, ullamcorper nibh vel, molestie est. Nulla ut ultricies ex. Maecenas fermentum nunc quis sapien porttitor eleifend. Sed bibendum neque vel sem tincidunt iaculis. Etiam et neque erat. Morbi lobortis viverra velit eget interdum. Phasellus at nulla fermentum, vehicula arcu at, malesuada dolor. Vestibulum hendrerit, velit id fringilla interdum, ex neque consectetur libero, et venenatis massa tortor et massa. Ut justo ante, gravida et euismod non, semper eu orci. Phasellus efficitur massa eget nisi laoreet, et auctor tortor bibendum. Curabitur sollicitudin, elit eu tristique laoreet, neque augue suscipit enim, in ornare ante magna vitae enim. Nulla ac faucibus placerat. </div>
+
+</body>
+<script type="text/javascript">
+
+let btn = document.getElementById("button");
+btn.addEventListener("click", func);
+let div=document.getElementsByClassName("row");
+let text=div[0].innerHTML;
+let ntext=text.length;
+   let c=Math.ceil(ntext/3)
+
+
+console.log(c);
+
+function func() {
+   let Ncolumns=document.getElementById("Columns").value;
+   div[0].innerHTML=""
+   let c=ntext/Ncolumns;
+
+    for (var i = 0; i < Ncolumns; i++) {
+        let np= document.createElement("p");
+        np.setAttribute("class","col");
+        np.textContent=text.slice(Math.ceil(i*c),Math.ceil((i+1)*c));
+        div[0].appendChild(np);
+    }
+
+    let r="auto ";
+    let v=""
+    for (var i = 0; i <Ncolumns ; i++) {
+        v=r+v;
+
+         }
+    div[0].style.display = "grid";
+    div[0].style.width = "100%";
+    div[0].style.gridTemplateColumns=v;
+
+    
+    
+    }
+
+
+    
+
+</script>
+</html>

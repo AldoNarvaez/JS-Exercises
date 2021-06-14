@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<body>
+
+<table id="container"></table>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+
+</style>
+
+<script>
+	let Nrows=5;
+	let Ncolumns=3;
+	let rows=document.getElementsByClassName("gridRow");
+	let columns=document.getElementsByClassName("cell");
+
+	for (r = 0; r < Nrows; r++) {
+        let row = document.createElement("tr");
+        container.appendChild(row).className = "gridRow";
+    };
+
+    for (i = 0; i < rows.length; i++) {
+        for (j = 0; j < Ncolumns; j++) {
+            let newCell = document.createElement("th");
+            rows[j].appendChild(newCell).className = "cell";
+        };
+
+    };
+	let x=document.getElementsByClassName("cell");
+	let bt=document.getElementsByTagName("button");
+
+    for (var i = 0; i < Nrows*Ncolumns; i++) {
+    		let but=document.createElement("button");
+
+    		
+    		x[i].appendChild(but).type="button";
+    		
+    		const bt=document.getElementsByTagName("button");
+    		bt[i].innerHTML=i;
+
+    		
+  };
+  
+  for (const butt of bt) {
+  	butt.addEventListener("click", function () {
+  		alert(butt.innerHTML)
+  		 	})
+  }
+
+  //for (var i = 0; i < Nrows*Ncolumns; i++) { 
+ // bt[i].addEventListener("click",function() {
+  		//		if s
+    	//		bt[i].innerHTML=alert(`${i}`)
+    	//	}) }
+
+
+    
+			
+</script>
+
+</body>
+</html>
