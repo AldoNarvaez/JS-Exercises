@@ -12,3 +12,11 @@ mul=function(a,b){
 }
 
 console.log(mul(6,9))
+
+//API
+
+const mulAPI=function(a,b){
+	let c=(a*b).toString(13);
+	return c
+}
+console.log(mulAPI(6,9))

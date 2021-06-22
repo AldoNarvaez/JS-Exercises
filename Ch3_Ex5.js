@@ -10,25 +10,21 @@ CustomObject.prototype.d = function ()
 
 
 var obj = new CustomObject (2, 3);
-
+//console.log(Object.getOwnPropertyNames(obj))
+//console.log(obj.__proto__)
+//console.log(obj.hasOwnProperty("c"))
 
 const printObjProp=function(obj,bol=false){
+  let prop=Object.getOwnPropertyNames(obj);
   if (bol==false){
-    for (keys in obj){
-      if (typeof obj[keys] == "function"){
-          console.log(obj[keys]());
-      }
-      else {console.log(obj[keys]);}
-    }
-
-   }
-   else {
-    for(keys in obj){
-      if (obj.hasOwnProperty(keys)==true)
-        console.log(obj[keys]);
+    for (var t of Object.getOwnPropertyNames(obj.__proto__)) {
+         if (t!="constructor"){
+              prop.push(t);
+         }
     }
    }
-
-}
-
-printObjProp(obj,true)
+return prop
+}   
+console.log(printObjProp(obj))
+console.log(printObjProp(obj,false))
+console.log(printObjProp(obj,true))

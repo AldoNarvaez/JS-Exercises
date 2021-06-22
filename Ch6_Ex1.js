@@ -1,64 +1,61 @@
 
 class Shape { 
-  constructor(pEdges){
+  constructor(pEdges, area, perimeter){
     this.pEdges=pEdges;
-    this.area;
-    this.perimeter;
+    this.area=area;
+    this.perimeter=perimeter;
   }
 
- fnDisplay() {
-    console.log("The figure has "+this.pEdges+" edges, area="+this.area+" and perimeter="+this.perimeter)
-  };
-
 }
+
+
 
 class Square extends Shape {
-  constructor(pEdges,size){
-    super(pEdges);
-    this.size=size;
-  }
-
-  Perimeter(){
-    let p=this.size*this.pEdges
-    this.perimeter=p
-    return p;
-  }
-
-  Area(){
-    let a=this.size*this.size;
-    this.area=a
-    return a;
-  }
-}
-
-class EqTriangle extends Shape {
-   constructor(pEdges,size){
-    super(pEdges);
-    this.size=size;
-  }
-
-  Perimeter(){
-    let p=this.size*this.pEdges
-    this.perimeter=p
-    return p;
-  }
-
-  Area(){
-    let a=this.size*Math.sqrt(3)*this.size/2;
-    this.area=a
-    return a;
+  constructor(side){
+    let area=side*side;
+    let perimeter=lado*4;
+    super(4,area,perimeter);
+    
   }
 
 }
 
-let square1=new Square(4,1);
+class Rectangle extends Shape {
+  constructor(side1,side2){
+    let area=side1*side2;
+    let perimeter=side1*2+side2*2;
+    super(4,area,perimeter);
+    
+  }
 
-console.log(square1.Perimeter())
-console.log(square1.Area())
-sq1.fnDisplay()
+}
 
-let triangle1=new EqTriangle(3,1);
+class EquilateralTriangle extends Shape {
+   constructor(side){
+    let area= Math.sqrt(3)*lado/2;
+    let perimeter=3*lado
+    super(3,area,perimeter);
+  }
 
-console.log(triangle1.Perimeter())
-console.log(triangle1.Area())
-tr1.fnDisplay()
+}
+
+
+class RectangleTriangle extends Shape {
+  constructor(base,height){
+    let area=base*height/2;
+    let perimeter=base+height+Math.sqrt(base*base+height*height);
+    super(4,area,perimeter);
+    
+  }
+
+}
+
+let square1=new Square(5);
+console.log(square1)
+let triangle1=new EquilateralTriangle(5);
+console.log(triangle1)
+
+let rect1=new Square(5);
+console.log(rect2)
+let triangle2=new RectangleTriangle(5);
+console.log(triangle2)

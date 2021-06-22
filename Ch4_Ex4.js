@@ -3,23 +3,23 @@
 const dataType = function(){
 	let res=[];
 	for (var i = 0; i < arguments.length ; i++) {
-		tipo=typeof arguments[i];
-		if (tipo =="number"){
-			if( /\./.test(arguments[i])==true ){
-				res.push("float");
+		type=typeof arguments[i];
+		if (type =="number"){
+			if( Number.isInteger(arguments[i]) ){
+				res.push(type);
 			}
-			else (res.push(tipo))
+			else (res.push("float"))
 		}
-		else if(tipo=="object"){
+		else if(type=="object"){
 			if(Array.isArray(arguments[i])){
 				res.push("array")
 
 			}
-			else{res.push(tipo)}
+			else{res.push(type)}
 
 			
 		}
-		else{res.push(tipo)}
+		else{res.push(type)}
 
 
    // res.push(tipo);
@@ -27,5 +27,4 @@ const dataType = function(){
 return res
 }
 
-
-console.log(dataType(1, 6.2831, "pi*2", [function(){}, 1], {}, function () {})); 
+console.log(dataType(3.333333e1, 1, 6.2831, "pi*2", [function(){}, 1], {}, function () {})); 

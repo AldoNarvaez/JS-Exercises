@@ -1,17 +1,22 @@
 const addRec= function(array) {
-	if (array.length==1){return array[0]}
+	const ar=[];
+	for(let element of array ){
+		ar.push(element)
+	}
+	if (ar.length==1){return ar[0]}
 
 	else {
-		n=array.length;
-		array[n-2]=array[n-2]+array[n-1];
-		array.pop(array[n-1]);
-		return addRec(array)
+		n=ar.length;
+		ar[n-2]=ar[n-2]+ar[n-1];
+		ar.pop(ar[n-1]);
+		return addRec(ar)
 
 	}
 	 
 
 }
 
-array=[1,3,5,7];
-
+array=[1,3,5,7,1];
+console.log(array)
 console.log(addRec(array))
+console.log(array)

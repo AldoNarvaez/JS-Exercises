@@ -4,18 +4,22 @@ for (let i=0; i<data.length; i++){
     data[i] = Math.random()
 }
 
-console.log(data[139])
 
 const Image= function(data, width, height, name){
   this.width=width;
   this.height=height;
   this.name=name;
+  if(this.width*this.height==data.length){
+  	this.data=data;
+  }
+  else{
+  	throw new Error("width and height values uncompatible");}
 }
 
 Image.prototype.pixelData = function(x,y) {
-  let size=Math.floor(Math.sqrt(data.length));
+  let size=Math.floor(Math.sqrt(this.data.length));
   let point= ((y-1)*size+x)-1;
-  return ("The color of the pixel in the position "+"("+x+","+y+") is "+ data[point]);
+  return (data[point]);
 
 };
 
