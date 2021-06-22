@@ -6,7 +6,7 @@ var myLib = {
             mul: function (a, b){ return a*b}
         },
         complex: {
-            Num: function (real, img){return real/img/*code goes here*/},
+            Num: function (real, img){return real+img/*code goes here*/},
             add: function (a, b){ return a+b/*code goes here*/},
             sub: function (a, b){ return a-b/*code goes here*/},
             mul: function (a, b){ return a*b/*code goes here*/}
@@ -35,9 +35,10 @@ with(myLib.math.real){
 }
 
 //Simplify Call
-var ad=myLib.math.real.add(20, 22);
-var mul=myLib.math.real.mul(2, 5);
-var answer2=myLib.math.real.sub(ad,mul);
+const r=myLib.math.real;
+var answer1=r.sub(r.add(20,22),r.mul(2,5));
+
+console.log(answer1);
 
 
 //Second Call
@@ -60,6 +61,12 @@ with(myLib.math){
 }                            
                        
 //Simplify Call
+
+const s=myLib.math;
+const comp=s.complex;
+const mat=s.matrix;
+var answer2=mat.times(mat.eye(4),comp.sub(comp.Num(s.real.add(5,2),-3),comp.Num(7,4)));
+console.log(answer2);
 
 var nc1=myLib.math.complex.Num (7,4);
 var r1=myLib.math.real.add(5,2);
