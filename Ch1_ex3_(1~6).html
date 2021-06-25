@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style type="text/css">
+
+
+
+</style>
+
+<body>
+    <div class="paragraph">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim lorem ante, vitae lacinia nulla efficitur quis. Aenean egestas risus. 
+    </div>
+
+</body>
+<script type="text/javascript">
+    let t=document.getElementsByClassName("paragraph")[0];
+    t.style.color="green"
+
+    const setCFB=function (dom,color="blue", fontSize="50px", background="green") {
+    this.color=color;
+    this.fontSize=fontSize;
+    this.background=background;
+    this.dom=dom;
+
+    dom.style.color=color;
+    dom.style.backgroundColor=background;
+    dom.style.fontSize=fontSize;
+        }
+
+setCFB(t)
+</script>
+</html>
