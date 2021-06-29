@@ -3,7 +3,7 @@
 const dataType = function(){
 	let res=[];
 	for (var i = 0; i < arguments.length ; i++) {
-		type=typeof arguments[i];
+		let type=typeof arguments[i];
 		if (type =="number"){
 			if( Number.isInteger(arguments[i]) ){
 				res.push(type);

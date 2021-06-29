@@ -10,13 +10,14 @@ CustomObject.prototype.d = function ()
 
 
 var obj = new CustomObject (2, 3);
-//console.log(Object.getOwnPropertyNames(obj))
-//console.log(obj.__proto__)
+console.log(obj)
+console.log(Object.getOwnPropertyNames(obj))
+console.log(obj.__proto__)
 //console.log(obj.hasOwnProperty("c"))
 
-const printObjProp=function(obj,bol=false){
+const printObjProp=function(obj,OwnProperties=false){
   let prop=Object.getOwnPropertyNames(obj);
-  if (bol==false){
+  if (OwnProperties==false){
     for (var t of Object.getOwnPropertyNames(obj.__proto__)) {
          if (t!="constructor"){
               prop.push(t);

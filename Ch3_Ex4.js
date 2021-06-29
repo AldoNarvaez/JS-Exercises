@@ -17,10 +17,23 @@ const Image= function(data, width, height, name){
 }
 
 Image.prototype.pixelData = function(x,y) {
-  let size=Math.floor(Math.sqrt(this.data.length));
-  let point= ((y-1)*size+x)-1;
-  return (data[point]);
-
+  
+  if (y!=1){
+    if (y>this.height) {
+      throw new Error("point out of range");
+    }
+    else{
+    let point= y*this.width+x-2;
+    return (data[point]);}
+    
+  else if(y==1){
+    let point=x-1;
+    if(point>this.width){
+      throw new Error("point out of range");
+    }
+    else{
+    return(data[point]);}
+  }
 };
 
 var img = new Image(data,40,40,"myImage");

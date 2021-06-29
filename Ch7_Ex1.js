@@ -2,7 +2,7 @@
 let hex="#3020FF"
 let hexpr2="#ABCDEFG334"
 
-//let hexnot = /^#?([a-f\d])([a-f\d])([a-f\d])/i ;
+let hexnot = /^#?([a-f\d]{2})([a-f\d])([a-f\d])/i ;
 
 const hexToRGB = function (hex) {
 	let arh=[]
@@ -33,8 +33,21 @@ const hexToRGB = function (hex) {
 	else{throw new Error("Not RGB format")}
 
 }
-
-
-
 console.log(hexToRGB(hex))
-console.log(hexToRGB(hexpr2))
+//console.log(hexToRGB(hexpr2))
+
+//Using RegEx
+
+let number = '#3020ff';
+
+function fromHexToRgb(hex){
+    let hexnot = hex.match(/\w{2}/gi);
+		let rgb=[]
+
+    for (l of hexnot){
+        rgb.push(parseInt(l, 16));
+    }
+    
+    return ("rgb("+rgb+")");
+}
+console.log(fromHexToRgb(hex))
