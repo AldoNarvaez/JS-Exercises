@@ -12,9 +12,6 @@ h1{
     text-align: center;
 }
 
-body {
-    counter-reset: section;
-  }
 
 .container{
     display: flex;
@@ -27,10 +24,7 @@ body {
     
   }
 
-.text{
-    text-align: justify;
-    
-}
+
 
 .imagetemp{
     float: left; 
@@ -70,16 +64,16 @@ text-align: justify-all;
 
 <script type="text/javascript">
 
-//var data = 
-//{"topic_1":{"title":"Title 1", 
-//"text":"Lorem ipsum dolor  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit rhoncus risus condimentum convallis. Maecenas vel nulla sit amet leo dictum rhoncus a et felis. Cras dapibus quam sit amet metus dapibus posuere. Aenean et porta purus. Cras eu nulla vel lacus lobortis laoreet nec eget ex. Cras ac orci eu lorem condimentum accumsan nec ut quam. Aenean vulputate cursus.imaget orci, id posuere velit aliquet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce facilisis a neque euismod faucibus. Vivamus aliquet ante nisi, quis vehicula enim ullamcorper a. Duis a nibh aliquam massa molestie tempor. Praesent vitae facilisis est, in suscipit elit. Nunc elementum odio sed varius malesuada. Maecenas a justo tellus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.   Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. .",
-//"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/270px-Coat_of_arms_of_the_Dominican_Republic.svg.png"},
-//"topic_2": {"title":"Title 2", 
-//"text":"sit amet consectetur  Aliquam eu urna nec urna venenatis maximus vitae venenatis nisi. Aenean ut sem ac risus porttitor rutrum ut et diam. Etiam vel tortor at nulla ultricies porttitor et gravida ante. Duis ut nisi sit amet lacus luctus vulputate feugiat et nunc. Morbi id massa consectetur, maximus massa at, euismod nisl. Nulla blandit imperdiet neque vitae aliquam. Pellentesque quis nisl augue. Nunc id quam ac quam hendrerit rutrum nec vitae enim. Vestibulum mauris arcu, consectetur sit amet libero in, iaculis rutrum ipsum. Integer nec varius urna.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque.  ",
-//"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg/150px-Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg.png"},
-//"topic_3":{"title": "Title 3", 
-//"text":"adipisicing elit  Sed vel dolor accumsan, dignissim erat id, commodo lorem. Integer vitae nisi risus. Fusce in magna pharetra, vulputate est vitae, scelerisque mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet eros quis lacus aliquet pulvinar. Praesent dignissim quam facilisis mattis bibendum. Etiam fermentum, nisi in suscipit tincidunt, diam eros auctor magna, ac euismod sem quam aliquet ante. Integer elementum, libero a feugiat finibus, nisl leo eleifend lorem, a hendrerit ipsum arcu id massa. Nullam in nisi erat. Mauris a vehicula quam. Duis tortor tellus, hendrerit ut lacus quis, volutpat elementum est. Cras tempor posuere lacus, non molestie lorem accumsan at.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. ",
-//"image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Escudo_de_Armas_de_Venezuela_2006.png/220px-Escudo_de_Armas_de_Venezuela_2006.png"}};
+var data = 
+{"topic_1":{"title":"Title 1", 
+"text":"Lorem ipsum dolor  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit rhoncus risus condimentum convallis. Maecenas vel nulla sit amet leo dictum rhoncus a et felis. Cras dapibus quam sit amet metus dapibus posuere. Aenean et porta purus. Cras eu nulla vel lacus lobortis laoreet nec eget ex. Cras ac orci eu lorem condimentum accumsan nec ut quam. Aenean vulputate cursus.imaget orci, id posuere velit aliquet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce facilisis a neque euismod faucibus. Vivamus aliquet ante nisi, quis vehicula enim ullamcorper a. Duis a nibh aliquam massa molestie tempor. Praesent vitae facilisis est, in suscipit elit. Nunc elementum odio sed varius malesuada. Maecenas a justo tellus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.   Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. .",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/270px-Coat_of_arms_of_the_Dominican_Republic.svg.png"},
+"topic_2": {"title":"Title 2", 
+"text":"sit amet consectetur  Aliquam eu urna nec urna venenatis maximus vitae venenatis nisi. Aenean ut sem ac risus porttitor rutrum ut et diam. Etiam vel tortor at nulla ultricies porttitor et gravida ante. Duis ut nisi sit amet lacus luctus vulputate feugiat et nunc. Morbi id massa consectetur, maximus massa at, euismod nisl. Nulla blandit imperdiet neque vitae aliquam. Pellentesque quis nisl augue. Nunc id quam ac quam hendrerit rutrum nec vitae enim. Vestibulum mauris arcu, consectetur sit amet libero in, iaculis rutrum ipsum. Integer nec varius urna.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque.  ",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg/150px-Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg.png"},
+"topic_3":{"title": "Title 3", 
+"text":"adipisicing elit  Sed vel dolor accumsan, dignissim erat id, commodo lorem. Integer vitae nisi risus. Fusce in magna pharetra, vulputate est vitae, scelerisque mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet eros quis lacus aliquet pulvinar. Praesent dignissim quam facilisis mattis bibendum. Etiam fermentum, nisi in suscipit tincidunt, diam eros auctor magna, ac euismod sem quam aliquet ante. Integer elementum, libero a feugiat finibus, nisl leo eleifend lorem, a hendrerit ipsum arcu id massa. Nullam in nisi erat. Mauris a vehicula quam. Duis tortor tellus, hendrerit ut lacus quis, volutpat elementum est. Cras tempor posuere lacus, non molestie lorem accumsan at.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. ",
+"image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Escudo_de_Armas_de_Venezuela_2006.png/220px-Escudo_de_Armas_de_Venezuela_2006.png"}};
 
 
 
@@ -88,17 +82,17 @@ console.log(hash)
 hash = hash.slice(1);
 
 
-fetch("./data.json")
-  .then(function(res){
-    return res.json();
+//fetch("./data.json")
+  //.then(function(res){
+   // return res.json();
     //console.log(res);
-  })
-  .then(function(data,hash){
-    HomePage(data,hash);
+ // })
+  //.then(function(data,hash){
+  //  HomePage(data,hash);
     //console.log(data);
-  });
+//  });
 
-//HomePage(data,hash);
+HomePage(data,hash);
 
 function HomePage(data,hash) {
 
