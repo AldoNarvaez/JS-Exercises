@@ -15,10 +15,6 @@ const building = [{"floor1":[{room:1, type:"employee", name: "Bob"},
 //console.log(building[0])
 //console.log(Object.keys(building[0])[0])
 //console.log(building[0]["floor1"][0]["Bob"])
-let dic={};
-
-dic["aldo"]=8.5;
-console.log(dic["Brenda"])
 
 	
 function find(){
@@ -52,14 +48,42 @@ function find(){
 
 let s= find();
 
-console.log(s("computer"));
-console.log(s("Bob"));
+//console.log(s("computer"));
+//console.log(s("Bob"));
 console.log(s("computer"));
 console.log(s("Karla"));
 
+//Automatically invoked function Expressions
+
+const find2 =(function(){
+
+	var memory ={};
+	function f(element){
+
+		if (memory[element]!=undefined){
+			return memory[element];
+		}
+
+		for (var i = 0; i < building.length; i++) {
 
 
 
-//console.log(s)
-//console.log(s("computer"))
-//console.log(find("Bob"))
+			let key=Object.keys(building[i])[0]
+
+			for (var j = 0; j < building[i][key].length; j++) {
+				let room=building[i][key][j]
+				if ( room["name"]==element){
+			 		memory[element]={"room":room["room"],"floor":key}//[room["type"], element, key, room["room"]])
+			 		return  memory[element]//{"floor": key, "room": room["room"]};
+
+				}
+			}	
+		}
+
+	}
+	return f;
+})();
+
+let r=find2;
+console.log(r("computer"));
+console.log(r("Karla"));

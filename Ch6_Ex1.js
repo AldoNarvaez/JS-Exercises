@@ -9,17 +9,6 @@ class Shape {
 }
 
 
-
-class Square extends Shape {
-  constructor(side){
-    let area=side*side;
-    let perimeter=side*4;
-    super(4,area,perimeter);
-    
-  }
-
-}
-
 class Rectangle extends Shape {
   constructor(side1,side2){
     let area=side1*side2;
@@ -29,6 +18,17 @@ class Rectangle extends Shape {
   }
 
 }
+
+class Square extends Rectangle {
+  constructor(side){
+  
+    super(side,side);
+    
+  }
+
+}
+
+
 
 class EquilateralTriangle extends Shape {
    constructor(side){
@@ -60,7 +60,7 @@ console.log(rect2)
 let triangle2=new RectangleTriangle(5);
 console.log(triangle2)
 
-class Vehicles{
+class Vehicle{
   constructor(model,year,trips, isDriving=true, maintenance=false){
     this.model=model;
     this.year=year;
@@ -70,12 +70,12 @@ class Vehicles{
   }
 }
 
-class Cars extends Vehicles{
+class Car extends Vehicle{
   constructor(model,year,trips, isDriving){
     super(model,year, trips,isDriving)
   }
 
-   Drive(){
+   drive(){
     this.isDriving=true;
   }
 
@@ -95,7 +95,7 @@ class Cars extends Vehicles{
   }
 }
 
-let car1= new Cars("nissan","1999",10);
+let car1= new Car("nissan","1999",10);
 console.log(car1)
 car1.stop()
 console.log(car1)

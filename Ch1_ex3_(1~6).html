@@ -18,19 +18,28 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim lorem an
 </body>
 <script type="text/javascript">
     let t=document.getElementsByClassName("paragraph")[0];
-    t.style.color="green"
 
-    const setCFB=function (dom,color="blue", fontSize="50px", background="green") {
-    this.color=color;
-    this.fontSize=fontSize;
-    this.background=background;
-    this.dom=dom;
+    const setAttr=function(color="blue", fontSize="50px", background="green") {
+        this.style.color=color;
+        this.style.fontSize=fontSize;
+        this.style.background=background;
 
-    dom.style.color=color;
-    dom.style.backgroundColor=background;
-    dom.style.fontSize=fontSize;
-        }
 
-setCFB(t)
+    }
+
+    setAttr.call(t)//,"red","10px","grey")
+
+    //const setCFB=function (dom,color="blue", fontSize="50px", background="green") {
+    ///this.color=color;
+    //this.fontSize=fontSize;
+    //this.background=background;
+    //this.dom=dom;
+
+    //dom.style.color=this.color;
+    //dom.style.backgroundColor=this.background;
+    //dom.style.fontSize=this.fontSize;
+      //  }
+
+//setCFB(t,"red","100px","grey")
 </script>
 </html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style type="text/css">
+
+h1{
+
+    font-size: 300%;
+    text-align: center;
+}
+
+body {
+    counter-reset: section;
+  }
+
+.container{
+    display: flex;
+    cursor: pointer;
+}
+
+.container::before {
+    counter-increment: section;
+    content: counter(section);
+    
+  }
+
+.text{
+    text-align: justify;
+    
+}
+
+.imagetemp{
+    float: left; 
+}
+p{
+text-align: justify-all;
+
+
+    text-justify: inter-word;
+}
+
+
+</style>
+
+<body>
+    <h1>Single Page Application </h1>
+    <template id="temp1">
+        <div>
+        	<img src="" alt="">
+            <h2></h2>
+        	<div><h2></h2><p></p></div>
+
+        </div>
+
+    </template>
+    <template id="temp2">
+    	<div>
+            
+        	<img src="" alt="">
+        	<div><h2></h2><p></p></div>
+        	<button onclick="fun()">Back</button> 
+
+        </div>
+       
+    </template>
+    <div class="back"></div>
+
+<script type="text/javascript">
+
+//var data = 
+//{"topic_1":{"title":"Title 1", 
+//"text":"Lorem ipsum dolor  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit rhoncus risus condimentum convallis. Maecenas vel nulla sit amet leo dictum rhoncus a et felis. Cras dapibus quam sit amet metus dapibus posuere. Aenean et porta purus. Cras eu nulla vel lacus lobortis laoreet nec eget ex. Cras ac orci eu lorem condimentum accumsan nec ut quam. Aenean vulputate cursus.imaget orci, id posuere velit aliquet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce facilisis a neque euismod faucibus. Vivamus aliquet ante nisi, quis vehicula enim ullamcorper a. Duis a nibh aliquam massa molestie tempor. Praesent vitae facilisis est, in suscipit elit. Nunc elementum odio sed varius malesuada. Maecenas a justo tellus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.   Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. .",
+//"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_the_Dominican_Republic.svg/270px-Coat_of_arms_of_the_Dominican_Republic.svg.png"},
+//"topic_2": {"title":"Title 2", 
+//"text":"sit amet consectetur  Aliquam eu urna nec urna venenatis maximus vitae venenatis nisi. Aenean ut sem ac risus porttitor rutrum ut et diam. Etiam vel tortor at nulla ultricies porttitor et gravida ante. Duis ut nisi sit amet lacus luctus vulputate feugiat et nunc. Morbi id massa consectetur, maximus massa at, euismod nisl. Nulla blandit imperdiet neque vitae aliquam. Pellentesque quis nisl augue. Nunc id quam ac quam hendrerit rutrum nec vitae enim. Vestibulum mauris arcu, consectetur sit amet libero in, iaculis rutrum ipsum. Integer nec varius urna.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque.  ",
+//"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg/150px-Escudo_de_San_Crist%C3%B3bal_de_La_Laguna.svg.png"},
+//"topic_3":{"title": "Title 3", 
+//"text":"adipisicing elit  Sed vel dolor accumsan, dignissim erat id, commodo lorem. Integer vitae nisi risus. Fusce in magna pharetra, vulputate est vitae, scelerisque mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet eros quis lacus aliquet pulvinar. Praesent dignissim quam facilisis mattis bibendum. Etiam fermentum, nisi in suscipit tincidunt, diam eros auctor magna, ac euismod sem quam aliquet ante. Integer elementum, libero a feugiat finibus, nisl leo eleifend lorem, a hendrerit ipsum arcu id massa. Nullam in nisi erat. Mauris a vehicula quam. Duis tortor tellus, hendrerit ut lacus quis, volutpat elementum est. Cras tempor posuere lacus, non molestie lorem accumsan at.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem mauris, bibendum non ligula nec, venenatis sodales ligula. Pellentesque sodales suscipit leo, eu vehicula purus porttitor in. Etiam fringilla consectetur justo. Quisque vel massa lobortis, posuere velit eu, varius lorem. Phasellus mattis dictum purus non iaculis. Vivamus libero massa, tincidunt a turpis a, viverra tincidunt massa. Suspendisse egestas eleifend risus, sed euismod metus laoreet vitae. Nullam vel accumsan massa.  Phasellus vehicula tellus sed orci varius, at condimentum risus hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed.  Sed eget lorem ut odio tincidunt aliquet non quis metus. Fusce eget interdum risus, et lacinia nunc. Aenean feugiat vulputate sem et vulputate. In at felis vel odio finibus faucibus sed sit amet urna. Cras aliquam magna et volutpat porta. Mauris neque odio, convallis quis magna et, faucibus consequat turpis. Sed luctus gravida odio sit amet hendrerit. Vivamus consequat, neque. ",
+//"image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Escudo_de_Armas_de_Venezuela_2006.png/220px-Escudo_de_Armas_de_Venezuela_2006.png"}};
+
+
+
+var hash = new URL(document.URL).hash;
+console.log(hash)
+hash = hash.slice(1);
+
+
+fetch("./data.json")
+  .then(function(res){
+    return res.json();
+    //console.log(res);
+  })
+  .then(function(data,hash){
+    HomePage(data,hash);
+    //console.log(data);
+  });
+
+//HomePage(data,hash);
+
+function HomePage(data,hash) {
+
+    var keys=Object.keys(data)
+    var datalen=keys.length;
+    var s=keys.indexOf(hash)
+    //console.log(s)
+
+    if(hash.length==0){    
+        let back=document.querySelector(".back")
+
+        let temp = document.querySelector("#temp1");
+        
+        let item = temp.content.querySelector("div");
+
+        var fragment = new DocumentFragment()
+
+        for (var i = 0; i < datalen; i++) {
+
+            item.setAttribute('class', 'container');
+            let im = item.querySelector("img");    
+            let divText = item.querySelector('div');
+            let title = divText.querySelector("h2");
+            let content = divText.querySelector('p');
+            content.innerHTML = data[keys[i]]['text'];
+            title.innerHTML = data[keys[i]]['title'];
+
+            im.setAttribute("src",data[keys[i]]["image"]);
+            im.setAttribute('height', "200px");
+            im.setAttribute('class',"image");
+
+            let a = document.importNode(item, true);
+            fragment.appendChild(a);
+        }
+
+        back.appendChild(fragment)
+
+        var cont=document.getElementsByClassName("container")
+        for (var i = 0; i < datalen; i++) {
+
+            let c=keys[i];
+            cont[i].addEventListener("click", function(){
+                    func(c);
+                });
+        }
+    }
+
+    else{
+       let t=data[hash]
+        func(hash)
+
+    }
+}
+
+
+
+function func(hash){
+    n=data[hash];
+    let ur=document.URL;
+    let urll = new URL(ur);
+    urll.hash=`#${hash}`;
+    //console.log(urll)
+    let new_url=urll.href;
+    document.location.href=new_url;
+    let back=document.querySelector(".back")
+    let temp2 = document.querySelector("#temp2");
+	back.innerHTML="";
+
+	let item = temp2.content.querySelector("div");
+item.setAttribute('class', 'temp');
+let im = item.querySelector("img");
+let divText = item.querySelector('div');
+let content = divText.querySelector('p');
+let title = divText.querySelector('h2');
+content.innerHTML = n['text'];
+title.innerHTML = n['title'];
+im.setAttribute("src",n["image"]);
+im.setAttribute('height', "200px");
+im.setAttribute('class',"imagetemp");
+
+
+let a = document.importNode(item, true);
+back.appendChild(a);
+}
+
+function fun(){
+    let ur=document.URL;
+    let urll = new URL(ur);
+    urll.hash="";
+    //console.log(urll)
+    let new_url=urll.href;
+    document.location.href=new_url;
+
+    var hash = new URL(document.URL).hash;
+    console.log(hash)
+    hash = hash.slice(1);
+    HomePage(data,hash);
+}
+
+
+
+
+
+
+
+    
+
+</script>
+</body>
+
+</html>

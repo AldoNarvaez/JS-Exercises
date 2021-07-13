@@ -1,90 +1,160 @@
+let c1={"name": "Aldo", "account":1234, "balance":100,"pin":1993};
+let c2={"name": "Sebas", "account":4567, "balance":200,"pin":2001};
+
+
 class BankInfo {
 
-	constructor(accountNum, balance){
-		this.accountNum=accountNum;
-		this.balance=balance
-	}
+	constructor(){
+		let accountsPrivate=Array.from(arguments);
+	
 
-	showBalance(account){
-		let i=this.accountNum.findIndex(x=> x==account)
-		return this.balance[i];
-	}
 
-	retrive(money,account){
-		let i=this.accountNum.findIndex(x=> x==account)
-		if(money<bank.balance[i]){
-			bank.balance[i]=bank.balance[i]-money;
-			return bank.balance[i]
+	this.showBalance=function (account,pin) {
+		
+		let p;
+		for(let i of accountsPrivate){
+			if (i["account"]==account && i["pin"]==pin){
+				return i["balance"]
+			}
+		
 		}
+		 throw new Error("Incorrect PIN");
 	}
 
-	hold(money, account){
-		let i=this.accountNum.findIndex(x=> x==account)
-			this.balance[i]=this.balance[i]+money;
-			return this.balance[i]
+	this.addClient=function (name,account,balance,pin){
+		let obj={"name":name, "account":account, "balance":balance, "pin":pin};
+		accountsPrivate.push(obj);
+	}
+
+	this.retrive=function(money,account,pin){
+		let p;
+		for(let i of accountsPrivate){
+			if (i["account"]==account && i["pin"]==pin){
+					if(money<i["balance"]){
+						i["balance"]=i["balance"]-money;
+						return money
+					}
+					else{throw new Error("Not enough money in balance")}
+			}
+		
+		}
+		throw new Error("Incorrect Pin")
+
+	}
+
+	this.hold=function(money, account,pin){
+	let p;
+		for(let i of accountsPrivate){
+			if (i["account"]==account && i["pin"]==pin){
+				i["balance"]=i["balance"]+money;
+				return money
+			}
+		
+		}
+		throw new Error("Incorrect Pin")
+
+
 		
 	}
 
-	deposit(money,FromAccount,toAccount){
-		let i=this.accountNum.findIndex(x=> x==FromAccount)
-		let j=this.accountNum.findIndex(x=> x==toAccount)
-			this.balance[j]=this.balance[j]+money;
+	this.deposit=function(money,FromAccount,toAccount,pin){
+
+
+		let p;
+		for(let i of accountsPrivate){
+			if (i["account"]==FromAccount && i["pin"]==pin){
+				for(let j of this.accounts)
+					if (j["account"]==toAccount){
+						j["balance"]=j["balance"]+money;
+						return money
 					}
+			}
+		
+		}
+		 throw new Error("Incorrect PIN");
+	}
+}
 }
 
 
-let acs=[1234,5678,9101,1213];
-let bal=[150,300,400,500];
 
-var bank = new BankInfo(acs,bal);
 
 class Client {
 	constructor(account, OwnMoney){
 		this.account=account;
 		this.OwnMoney=OwnMoney;
+		//this.pin=pin;
 	}
 
-	get balance(){ let i=bank.accountNum.findIndex(x=> x==this.account);
-		return bank.showBalance(this.account);
+	 balance(pin){ 
+		return bank.showBalance(this.account,pin);
+		//let i=bank.accountNum.findIndex(x=> x==this.account);
+		//return bank.showBalance(this.account);
 	}
 
-	 retrive(money){
-	 	this.OwnMoney=this.OwnMoney+bank.retrive(money,this.account);
+	 retrive(money,pin){
+	 	this.OwnMoney=this.OwnMoney+bank.retrive(money,this.account,pin);
 		
 	}
 
-	 hold(money){
+	 hold(money,pin){
 	 	if(money<=this.OwnMoney)
-	 	{this.OwnMoney=this.OwnMoney-money;
-	 	bank.hold(money,this.account);
+	 	{ 	this.OwnMoney=this.OwnMoney-bank.hold(money,this.account,pin);
 		}
-		else(console.log("You don't have enough money"))
+		 else{throw new Error("Not enough pocket Money")}
 	}
 
-	 deposit(money, account){
+	 deposit(money, account,pin){
 	 	if(money<=this.OwnMoney)
 	 	{this.OwnMoney=this.OwnMoney-money;
-	 	bank.deposit(money,this.account,account);
+	 	bank.deposit(money,this.account,account, pin);
 		}
-		else{console.log("You don't have enough money")}
+		else{ throw new Error("You don't have enough money")}
 		
 	}
 }
 
-var client1=new Client(1234,300);
-var client2=new Client(5678,200);
-var client3=new Client(9101,1000);
-var client4=new Client(1213,100);
+const addingClients=function (name, account, pin, balance,pocketMoney) {
+	let client=new Client(account,pocketMoney);
+	bank.addClient(name,account,balance,pin);
+	return client;
 
-console.log(bank);
+}
+
+
+let bank=new BankInfo(c2,c1)
+
+var client1=new Client(1234,300);
+var client2=new Client(4567,100);
+//var client3=addingClients("Laura",5678,2100,500, 250);
+//var client3=new Client(9101,1000);
+//var client4=new Client(1213,100);
+
 console.log(client1);
 console.log(client2);
-client1.hold(100);
-client1.deposit(100,client2.account)
-console.log(bank)
+console.log(bank);
+console.log(client1.balance(1993));
+client1.hold(100,1993);
+//client1.deposit(100,client2.account,1993)
+//console.log(bank)
 console.log(client1)
-console.log(client2)
-client2.retrive(100);
-console.log(client2)
-console.log(bank)
+//console.log(client2)
+//client2.retrive(100,2001);
+//console.log(client2)
+//console.log(bank)
+
+//class MyObject {
+  // constructor(){
+    // let _privateValue = 0;
+  //  this.getValue= function() { return _privateValue; }
+   // this.inc = function() { _privateValue++;}
+  //}
+
+//}
+
+//let c=new MyObject();
+//console.log(c)
+
+
+
 

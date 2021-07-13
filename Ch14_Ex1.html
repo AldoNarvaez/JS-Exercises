@@ -30,28 +30,34 @@
 
 let btn = document.getElementById("button");
 btn.addEventListener("click", func);
-let div=document.getElementsByClassName("grid");
+let div=document.querySelector(".grid");
 
 function func() {
     let Nrows=document.getElementById("Rows").value;
     let Ncolumns=document.getElementById("Columns").value;
-     div[0].innerHTML=""
+     div.innerHTML="";
 
-    for (var i = 0; i < Nrows*Ncolumns; i++) {
-        let nd= document.createElement("div");
-        nd.setAttribute("class","cell");
-        nd.textContent=i;
-        div[0].appendChild(nd);
-    }
+     var fragment = new DocumentFragment()
+for (let i=0; i<Nrows*Ncolumns; i++){
+    let div = document.createElement("div");
+    div.setAttribute("class", "cell");
+    div.textContent = i;
+    fragment.appendChild(div);
+}
+div.appendChild(fragment);
+
+
+
+
     let r="auto ";
     let v=""
     for (var i = 0; i <Ncolumns ; i++) {
         v=r+v;
 
          }
-    div[0].style.display = "grid";
-    div[0].style.width = "100%";
-    div[0].style.gridTemplateColumns=v;
+    div.style.display = "grid";
+    div.style.width = "100%";
+    div.style.gridTemplateColumns=v;
 
     
     }

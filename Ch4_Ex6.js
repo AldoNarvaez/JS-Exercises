@@ -1,18 +1,18 @@
 const flatten=function (array) {
 let flat=[];
 
-return array.reduce((a , b ) => { if (Array.isArray(b)==true ){return a.concat(flatten(b));} 
+return array.reduce((a , b ) => { if (Array.isArray(b)){return a.concat(flatten(b));} 
 else{ return a.concat(b);} 
 }, flat ); 
 
  
 }
 
-const distance = function(){
-	let a=[]
-	for (var i = 0; i < arguments.length ; i++){
-   a.push(arguments[i]);
-  }
+const distance = function(...a){
+	//let a=Array.from(arguments);//[]
+	///for (var i = 0; i < arguments.length ; i++){
+   //a.push(arguments[i]);
+  //}
 
 a=flatten(a);
 
@@ -42,9 +42,5 @@ console.log(distance([1,2],[2,2]));
 console.log(distance([1,2,1],[2,2,4]));
 //console.log(distance([1,2],[2,3,4]));
 
-let v= [[1,2],[2,2]];
-const r= [1,2,[3,4]]
-console.log(Array.isArray(r))
-console.log(r.flat())
 
 
