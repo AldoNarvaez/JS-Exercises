@@ -1,7 +1,8 @@
-let reg=/[\w\d]+/i
+let reg=/[a-z\d]+/i
 let ex1="aBc";
 let ex2="xyz";
 let ex3="aK89";
+let ex4="12390"
 
 const shift=function (entry) {
     let str="";
@@ -27,4 +28,4 @@ const shift=function (entry) {
 
 console.log(ex1.replace(reg,shift(ex1)))
 console.log(ex2.replace(reg,shift(ex2)))
-console.log(ex3.replace(reg,shift(ex3)))
+console.log(ex3.replace(reg,shift(ex4)))

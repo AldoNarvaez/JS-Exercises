@@ -1,5 +1,5 @@
 //A
-let regexa=/\w+\s\d{2},\s\d{4}/i;
+let regexa=/((jan|febr)uary|march|april|june|(jul|ma)y|(sept|nov|dec)ember|october|august)\s\d{2},\s\d{4}/i;
 let exia="September 29, 1972";
 let exiia="February 99, 0001";
 let exiiia="June 04, 3000";
@@ -41,7 +41,7 @@ console.log(exiiiid.match(regexd));
 
 //E
 let input = "Bee zapp crow Eagle Zorro mouse Ape you";
-let regexe = /\b[b-y]+\b[b-y]?/ig;
+let regexe = /\b[b-y]+\b/ig;//+\b[b-y]?/ig;
 console.log(input.match(regexe))
 
 //F
