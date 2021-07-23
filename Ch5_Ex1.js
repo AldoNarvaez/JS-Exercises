@@ -11,7 +11,6 @@ class BankInfo {
 
 	this.showBalance=function (account,pin) {
 		
-		let p;
 		for(let i of accountsPrivate){
 			if (i["account"]==account && i["pin"]==pin){
 				return i["balance"]
@@ -27,7 +26,6 @@ class BankInfo {
 	}
 
 	this.retrive=function(money,account,pin){
-		let p;
 		for(let i of accountsPrivate){
 			if (i["account"]==account && i["pin"]==pin){
 					if(money<i["balance"]){
@@ -43,7 +41,6 @@ class BankInfo {
 	}
 
 	this.hold=function(money, account,pin){
-	let p;
 		for(let i of accountsPrivate){
 			if (i["account"]==account && i["pin"]==pin){
 				i["balance"]=i["balance"]+money;
@@ -59,8 +56,6 @@ class BankInfo {
 
 	this.deposit=function(money,FromAccount,toAccount,pin){
 
-
-		let p;
 		for(let i of accountsPrivate){
 			if (i["account"]==FromAccount && i["pin"]==pin){
 				for(let j of this.accounts)
@@ -81,39 +76,39 @@ class BankInfo {
 
 class Client {
 	constructor(account, OwnMoney){
-		this.account=account;
-		this.OwnMoney=OwnMoney;
+		let acc=account;
+		let pocket=OwnMoney;
 		//this.pin=pin;
-	}
+	
 
-	 balance(pin){ 
-		return bank.showBalance(this.account,pin);
+	this.balance=function (pin){ 
+		return bank.showBalance(acc,pin);
 		//let i=bank.accountNum.findIndex(x=> x==this.account);
 		//return bank.showBalance(this.account);
 	}
 
-	 retrive(money,pin){
-	 	this.OwnMoney=this.OwnMoney+bank.retrive(money,this.account,pin);
+	 this.retrive=function(money,pin){
+	 	pocket=pocket+bank.retrive(money,acc,pin);
 		
 	}
 
-	 hold(money,pin){
-	 	if(money<=this.OwnMoney)
-	 	{ 	this.OwnMoney=this.OwnMoney-bank.hold(money,this.account,pin);
+	 this.hold=function(money,pin){
+	 	if(money<=pocket)
+	 	{ 	pocket=pocket-bank.hold(money,acc,pin);
 		}
 		 else{throw new Error("Not enough pocket Money")}
 	}
 
-	 deposit(money, account,pin){
-	 	if(money<=this.OwnMoney)
-	 	{this.OwnMoney=this.OwnMoney-money;
-	 	bank.deposit(money,this.account,account, pin);
+	 this.deposit=function(money, account,pin){
+	 	if(money<=pocket)
+	 	{pocket=pocket-money;
+	 	bank.deposit(money,acc,account, pin);
 		}
 		else{ throw new Error("You don't have enough money")}
 		
 	}
 }
-
+}
 const addingClients=function (name, account, pin, balance,pocketMoney) {
 	let client=new Client(account,pocketMoney);
 	bank.addClient(name,account,balance,pin);
@@ -130,17 +125,17 @@ var client2=new Client(4567,100);
 //var client3=new Client(9101,1000);
 //var client4=new Client(1213,100);
 
-console.log(client1);
-console.log(client2);
-console.log(bank);
+//console.log(client1);
+console.log(client2.balance(2001));
+//console.log(bank);
 console.log(client1.balance(1993));
 client1.hold(100,1993);
 //client1.deposit(100,client2.account,1993)
 //console.log(bank)
-console.log(client1)
-//console.log(client2)
-//client2.retrive(100,2001);
-//console.log(client2)
+//console.log(client1)
+console.log(client1.balance(1993))
+client2.retrive(100,2001);
+console.log(client2.balance(2001))
 //console.log(bank)
 
 //class MyObject {

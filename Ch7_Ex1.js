@@ -4,19 +4,22 @@ let hexpr2="#ABCDEFG334";
 let number = '#3020f';
 
 
+
 //With RegEx
 
 function fromHexToRgb(hex){
-    let hexnot = hex.match(/[a-f\d]{2}|\w/gi);
-    if (hexnot.length==3 && hexnot[hexnot.length-1].length==2){
-		let rgb=[]
+    let hexnot = hex.match(/^#?[a-f\d]{6}$/gi);
+    if (hexnot){
+        let hexnot2=hexnot[0].match(/[a-f\d]{2}/gi)
+    
+    	let rgb=[]
     
 
-    for (l of hexnot){
-        rgb.push(parseInt(l, 16));
-    }
+        for (l of hexnot2){
+            rgb.push(parseInt(l, 16));
+        }
     
-    return ("rgb("+rgb+")");
+        return ("rgb("+rgb+")");
 	}
 	else{throw new Error("Not RGB format")}
 }

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<style type="text/css">
+    <style type="text/css">
 
-.cell{
+        .cell{
 
-    text-align: center;
-    border: 1px solid black;
-    height: 130px;
-}
+            text-align: center;
+            border: 1px solid black;
+            height: 130px;
+        }
 
-</style>
+    </style>
+    <title>NxM Grid</title>
+</head>
 
 <body>
     <h2>Enter: 
@@ -25,7 +28,6 @@
     </h2>
     <div class="grid"></div>
 
-</body>
 <script type="text/javascript">
 
 let btn = document.getElementById("button");
@@ -38,32 +40,34 @@ function func() {
      div.innerHTML="";
 
      var fragment = new DocumentFragment()
-for (let i=0; i<Nrows*Ncolumns; i++){
-    let div = document.createElement("div");
-    div.setAttribute("class", "cell");
-    div.textContent = i;
-    fragment.appendChild(div);
-}
-div.appendChild(fragment);
+    for (let i=0; i<Nrows*Ncolumns; i++){
+        let div = document.createElement("div");
+        div.setAttribute("class", "cell");
+        div.textContent = i;
+        fragment.appendChild(div);
+    }
+    div.appendChild(fragment);
 
 
 
 
-    let r="auto ";
-    let v=""
+let r="auto ";
+let v=""
     for (var i = 0; i <Ncolumns ; i++) {
-        v=r+v;
+            v=r+v;
 
-         }
+             }
     div.style.display = "grid";
     div.style.width = "100%";
     div.style.gridTemplateColumns=v;
 
     
-    }
+}
 
 
     
 
 </script>
+</body>
+
 </html>

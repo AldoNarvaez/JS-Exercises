@@ -10,7 +10,7 @@
 </style>
 <body>
    <button type="button" id="btnClick" value="Click me" onclick="CountFun()">Click</button>
-   <meter id="meter" value="0.0"></meter>
+   <meter id="meter" value="0" min="0" max="3"></meter>
 
 
 
@@ -20,23 +20,16 @@
     var cnt=0;
     var m=0;
     function CountFun(){
-       cnt=parseInt(cnt)+parseInt(1);
-       m=.333*cnt;
+       cnt=cnt+1;
+       //m=.333*cnt;
        var but=document.getElementById("btnClick");
-       but.innerHTML="Click: ("+cnt +")";
+       but.textContent="Click: ("+cnt +")";
        let met = document.getElementById('meter');
-       met.value=m;
+       met.value=cnt;
     
-       if (cnt>1){
-         const x = document.getElementById("btnClick");
-  
-          x.addEventListener("click", Respond);
-  
-        function Respond() {
-            x.innerText = "disabled";
-            x.disabled=true;
-            x.removeEventListener("click", Respond);
-        }
+       if (cnt>2){
+            but.textContent = "disabled";
+            but.disabled=true;        
      }
 
     }

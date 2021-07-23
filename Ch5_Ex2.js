@@ -84,6 +84,5 @@ const find2 =(function(){
 	return f;
 })();
 
-let r=find2;
-console.log(r("computer"));
-console.log(r("Karla"));
+console.log(find2("computer"));
+console.log(find2("Karla"));
