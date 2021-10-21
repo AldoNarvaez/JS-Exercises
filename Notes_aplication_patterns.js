@@ -15,7 +15,10 @@ const pubsub={
 		if(this.events[evName]){
 			let arr=this.events[evName];
 			for(var i=0; i<arr.length;i++){
-				arr[i](data);
+				if(data!=undefined){
+				arr[i](data);}
+				else{ arr[i]();
+							break}
 			}
 		}
 	}
@@ -56,7 +59,11 @@ const memory={
 		pubsub.subscribe("modifyNote",memory.modifyNote);
 		pubsub.subscribe("shift",memory.shift);
 		pubsub.subscribe("editedNote",memory.edited);
-        pubsub.subscribe("undo",memory.command)
+        pubsub.subscribe("undo",memory.command);
+        pubsub.subscribe("render",memory.render);
+    	pubsub.subscribe("searching",memory.search);
+
+
 
 
 	}
@@ -118,7 +125,6 @@ const memory={
 				dataSearch.push(data[i])
 			}
 			else{dataSearch.push("")}
-
 		}
 
 		pubsub.publish("UpdateNotes",dataSearch);}
@@ -205,7 +211,8 @@ const memory={
 	memory.stack.pop();
 	localStorage.setItem(0,JSON.stringify(memory.stack))
 	memory.render();
-	location.reload()}
+	location.reload();
+	}
 
 	else if(obj["edited"]){
 		let num=obj["edited"]["num"];
@@ -258,15 +265,13 @@ const notes={
     	let butCreate=document.getElementById("buttonCreate");
         butCreate.addEventListener("click", notes.newNote);
     	pubsub.subscribe("UpdateNotes",notes.updateNotes);
-    	pubsub.subscribe("render",memory.render);
     	let searchArea=document.querySelector("#search");
     	searchArea.addEventListener("keyup",notes.search);
-    	pubsub.subscribe("searching",memory.search);
     	let butUndo=document.getElementById("buttonUndo");
         butUndo.addEventListener("click", notes.Undo);
 	},
 	Undo: function () {
- 	memory.command();
+ 	pubsub.publish("undo",undefined);
  	},
 
 	search:function () {
@@ -303,15 +308,15 @@ const notes={
 			noteDiv.setAttribute("num",data.length-i);
 			//let p=document.createElement("p");
 			let butDelete=document.createElement("button");
-            butDelete.setAttribute("id","buttonDelete");
+            butDelete.setAttribute("class","buttonDelete");
             butDelete.setAttribute("num",data.length-i);
             butDelete.textContent="Delete";        
             let butEdit=document.createElement("button");
-            butEdit.setAttribute("id","buttonEdit");
+            butEdit.setAttribute("class","buttonEdit");
             butEdit.setAttribute("num",data.length-i);
             butEdit.textContent="Edit"
             let butView=document.createElement("button");
-            butView.setAttribute("id","buttonView");
+            butView.setAttribute("class","buttonView");
             butView.setAttribute("num",data.length-i);
             butView.textContent="View"
 			noteDiv.innerHTML=data[data.length-1-i];
@@ -332,15 +337,15 @@ const notes={
 	inNote: function(clicked){
 
         let bt=clicked.target;
-        if (bt.getAttribute("id")=="buttonDelete"){
+        if (bt.getAttribute("class")=="buttonDelete"){
             notes.noteDeleted(bt);
 
         }
-        else if(bt.getAttribute("id")=="buttonEdit"){
+        else if(bt.getAttribute("class")=="buttonEdit"){
             notes.noteEdit(bt);
 
         }
-        else if(bt.getAttribute("id")=="buttonView"){
+        else if(bt.getAttribute("class")=="buttonView"){
             notes.noteView(bt);
 
         }
