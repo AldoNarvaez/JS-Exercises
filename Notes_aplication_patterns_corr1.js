@@ -1,23 +1,18 @@
-localStorage.clear();
+//localStorage.clear();
 
 const pubsub={
 	events:{},
 
-	subscribe: function (evName, fn) {
+	subscribe(evName, fn) {
 		this.events[evName]=this.events[evName] || [];
 		this.events[evName].push(fn);
 	},
-	unsubscribe: function (argument) {
-
-	},
-	publish : function (evName, data) {
+	unsubscribe() {},
+	publish(evName, data) {
 		if(this.events[evName]){
 			let arr=this.events[evName];
 			for(var i=0; i<arr.length;i++){
-				if(data!=undefined){
-				arr[i](data);}
-				else{ arr[i]();
-							break}
+				arr[i](data);			
 			}
 		}
 	}
@@ -28,8 +23,19 @@ const memory={
 	localNotes:[],
 	localDates:[],
 	stack: [],
-
-	render: function () {
+	init() {
+		pubsub.publish("UpdateNotes",memory.localNotes)
+		pubsub.subscribe("createNote",memory.addNote);
+		pubsub.subscribe("noteDeleted",memory.deleteNote);
+		pubsub.subscribe("locateNote",memory.locateNote);
+		pubsub.subscribe("modifyNote",memory.modifyNote);
+		pubsub.subscribe("shift",memory.shift);
+		pubsub.subscribe("editedNote",memory.edited);
+        pubsub.subscribe("undo",memory.command);
+        pubsub.subscribe("render",memory.render);
+    	pubsub.subscribe("searching",memory.search);
+	},
+	render() {
 		if (!localStorage.getItem(0)){
 			//console.log("no notes")
     		localStorage.setItem(0,'');
@@ -48,23 +54,11 @@ const memory={
             memory.localNotes.push(notei)
         }
         if(localStorage.getItem(0)!=''){
-        let st= JSON.parse(localStorage.getItem(0));
-        memory.stack=st; }
-
-        pubsub.publish("UpdateNotes",memory.localNotes)
-		pubsub.subscribe("createNote",memory.addNote);
-		pubsub.subscribe("noteDeleted",memory.deleteNote);
-		pubsub.subscribe("locateNote",memory.locateNote);
-		pubsub.subscribe("modifyNote",memory.modifyNote);
-		pubsub.subscribe("shift",memory.shift);
-		pubsub.subscribe("editedNote",memory.edited);
-        pubsub.subscribe("undo",memory.command);
-        pubsub.subscribe("render",memory.render);
-    	pubsub.subscribe("searching",memory.search);
-
-
-
-
+        	let st= JSON.parse(localStorage.getItem(0));
+        	memory.stack=st; 
+		}  
+		pubsub.publish("UpdateNotes",memory.localNotes);
+      
 	}
 		,
 	addNote:function (data) {
@@ -251,26 +245,35 @@ const memory={
 }
 
 const notes={
-
-	render:function (container) {
-		let temp=document.querySelector("#notes");
-		div=temp.content.cloneNode(true);
-        container.appendChild(div);
-
-	    //let div2=document.querySelector(".saved");
-	    //div2.innerHTML="";
-
-		let textArea=document.getElementsByName("comments")[0];
-        textArea.value="";
-        let saved=document.querySelector(".saved")
+	init(){
+		let saved=document.querySelector(".savedNotes")
     	saved.addEventListener("click",notes.inNote);
-    	let butCreate=document.getElementById("buttonCreate");
+
+		let butCreate=document.getElementById("buttonCreate");
         butCreate.addEventListener("click", notes.newNote);
-    	pubsub.subscribe("UpdateNotes",notes.updateNotes);
-    	let searchArea=document.querySelector("#search");
+
+		
+		let searchArea=document.querySelector("#search");
     	searchArea.addEventListener("keyup",notes.search);
+		
     	let butUndo=document.getElementById("buttonUndo");
         butUndo.addEventListener("click", notes.Undo);
+		
+		pubsub.subscribe("UpdateNotes",notes.updateNotes);
+		pubsub.subscribe("render", notes.render);
+	    pubsub.subscribe("textArea",notes.textAreaView);
+	    pubsub.subscribe("textArea",notes.textAreaEdit);
+
+
+		document.addEventListener('keydown', notes.checkZ)
+	},
+	render:function (container) {
+		// let temp=document.querySelector("#notes");
+		// div=temp.content.cloneNode(true);
+        // container.appendChild(div);
+
+		let textArea=document.getElementById("textarea");
+        textArea.value="";
 	},
 	Undo: function () {
  	pubsub.publish("undo",undefined);
@@ -295,16 +298,14 @@ const notes={
 	},
 
 	updateNotes:function (data) {
-
-		//if(Object.keys(localStorage)!=0){
-
 	    let div=document.querySelector(".savedNotes");
 	    
 	 	let fragment=document.createDocumentFragment();
+		const noteDivTempl = document.getElementById('notes').content.firstElementChild
+
 		for(var i = 0; i<data.length ; i++) {
 
-			let noteDiv=document.querySelector(".note");
-
+			let noteDiv = noteDivTempl.cloneNode(true);
 			noteDiv.setAttribute("id","note "+(data.length-i));
 			//noteDiv.setAttribute("draggable","true");
 			//noteDiv.setAttribute("ondragstart","dragging(event)")
@@ -326,15 +327,17 @@ const notes={
 			noteDiv.innerHTML=data[data.length-1-i];
 			let space=document.createElement("br")
 			if(noteDiv.innerHTML!=""){
-			noteDiv.appendChild(space)
-			noteDiv.appendChild(butDelete);
-            noteDiv.appendChild(butView);
-            noteDiv.appendChild(butEdit);
-           const a= document.importNode(noteDiv,true)
-            
-			fragment.appendChild(a)
-				}
+				noteDiv.appendChild(space)
+				noteDiv.appendChild(butDelete);
+				noteDiv.appendChild(butView);
+				noteDiv.appendChild(butEdit);
+				// const a= document.importNode(noteDiv,true)
+				
+				fragment.appendChild(noteDiv)
+			}
 		}
+		//console.log('fragment', div,fragment)
+		div.innerHTML=''
 		div.appendChild(fragment);
 			    //div2.innerHTML="";
 
@@ -367,6 +370,7 @@ const notes={
 
     noteDeleted:function (note) {
 		let b=note.getAttribute("data-num");
+		console.log(b);
         pubsub.publish("noteDeleted",b)
        
                },
@@ -383,7 +387,6 @@ const notes={
     butBack.addEventListener("click",notes.back);
     let div=document.querySelector(".buttons");
     div.appendChild(butBack);
-    pubsub.subscribe("textArea",notes.textAreaView);
     pubsub.publish("locateNote",b)
 
     },
@@ -415,7 +418,7 @@ const notes={
             butCancel.setAttribute("class","cancel");
             butCancel.textContent="Cancel";
             butCancel.addEventListener("click",notes.back);
-        pubsub.subscribe("textArea",notes.textAreaEdit);
+        
 
         let butEdit=document.createElement("button");
             butEdit.setAttribute("class","edit");
@@ -484,17 +487,12 @@ function drop(ev) {
   let from=document.getElementById(data);
   var n=to.getAttribute("data-num");
   var m=from.getAttribute("data-num");
-  pubsub.publish("shift",[n,m])
-
-  
+  pubsub.publish("shift",[n,m]);
 }
 
 
-(function () {
- 
-let saved=document.querySelector(".saved");
-
-notes.render(saved);
-memory.render()
-document.addEventListener('keydown', notes.checkZ)
+(function () {	
+	memory.init();
+	notes.init();
+	pubsub.publish('render');
 })();

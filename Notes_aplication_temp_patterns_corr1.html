@@ -33,24 +33,22 @@ textarea{
 
 <body>
 
-    <h1>Notes</h1>
-    <p class="subt">Write a note</p>
-    <textarea name="search" cols="70" rows="1" id="search" placeholder="Search..."></textarea>
-    <div class="Dates"></div>
+            <h1>Notes</h1>
+        <p class="subt">Write a note</p>
+        <textarea name="search" cols="70" rows="1" id="search" placeholder="Search..."></textarea>
+        <div class="Dates"></div>
 
-    <textarea name="comments" cols="70" rows="10" id="textarea" placeholder="Write something..."></textarea>
-    <button id="buttonCreate">Create new note</button>   <button id="buttonUndo">Undo</button>
+        <textarea name="comments" cols="70" rows="10" id="textarea" placeholder="Write something..."></textarea>
+        <button id="buttonCreate">Create new note</button>   <button id="buttonUndo">Undo</button>
 
-    <div class="buttons"></div>
-    <div class="saved"> </div>
+        <div class="buttons"></div>
+
+        <div class="savedNotes" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
         <template id="notes">
-            <div class="savedNotes" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div class="note" draggable="true" ondragstart="dragging(event)"></div>
-    
-            </div>
+            <div class="note" draggable="true" ondragstart="dragging(event)"></div>
         </template>
-    <script src="./Notes_aplication_patterns_corr1.js">
+    <script src="./Notes_aplication_patterns_corr1_Iv.js">
     
 
 </script>
